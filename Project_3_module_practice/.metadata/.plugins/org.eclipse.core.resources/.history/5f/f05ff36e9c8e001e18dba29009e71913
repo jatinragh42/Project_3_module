@@ -1,0 +1,31 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<form action="UserListCtl">
+		<h1>USER LIST</h1>
+
+		<div >
+			<table>
+				<thead>
+					<tr>
+						<th width="10%" class="text">S.NO</th>
+						<th width="10%" class="text">FirstName</th>
+						<th width="10%" class="text">LastName</th>
+						<th width="10%" class="text">Login</th>
+						<th width="10%" class="text">Password</th>
+						<th width="10%" class="text">Address</th>
+					</tr>
+			</table>
+
+
+		</div>
+
+	</form>
+</body>
+</html>

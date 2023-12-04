@@ -1,0 +1,43 @@
+	package com.rays.model;
+
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+
+import com.rays.dto.UserDTO;
+import com.rays.util.HibDataSource;
+
+public class UserModelHibImp implements UserModelInt {
+
+	public long add(UserDTO dto) throws Exception{
+		
+		Session session = HibDataSource.getSession();
+		Transaction tx = null;
+		try{
+			tx = session.beginTransaction();
+
+			System.out.println("trac");
+			session.save(dto);
+			System.out.println("trac1");
+			dto.getId();
+			System.out.println("trac3");
+			tx.commit();
+		} catch (HibernateException e) {
+			e.printStackTrace();
+			// TODO: handle exception
+			if (tx != null) {
+				tx.rollback();
+
+			}
+			//throw new ApplicationException("Exception in User Add " + e.getMessage());
+		} finally {
+			session.close();
+		}
+		return dto.getId();
+		
+		
+
+		
+	}
+
+}

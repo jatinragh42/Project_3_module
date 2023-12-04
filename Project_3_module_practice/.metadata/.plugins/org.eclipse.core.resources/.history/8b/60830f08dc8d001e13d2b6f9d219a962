@@ -1,0 +1,39 @@
+package com.rays.model;
+
+import javax.transaction.Transaction;
+
+import org.hibernate.Session;
+
+import com.rays.dto.UserDTO;
+import com.rays.util.HibDataSource;
+
+public class UserModelHibImp implements UserModelInt {
+
+	@Override
+	public long add(UserDTO dto) throws Exception {
+		
+		Session session = HibDataSource.getSession();
+		
+		org.hibernate.Transaction tx = null;
+		
+		tx = session.beginTransaction();
+		
+		session.save(dto);
+		
+		dto.getId();
+		tx.commit();
+		
+		if(tx!=null) {
+			tx.rollback();
+		}
+		
+		session.close();
+		
+		
+		
+		return dto.getId();
+	}
+	
+	
+
+}
